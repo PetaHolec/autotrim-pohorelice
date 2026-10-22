@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://petaholec.github.io/autotrim-pohorelice/sitemap.xml
