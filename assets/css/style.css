@@ -251,6 +251,12 @@ section { position: relative; }
 .dock { display: none; }
 
 /* ---------- reveal ---------- */
+/* hero entrance: transform only, so the headline paints (and counts as LCP) immediately */
+.rise { animation: rise 1.1s var(--ease) both; }
+.hero__title.rise { animation-delay: .06s; }
+.hero__lead.rise { animation-delay: .14s; }
+.hero__cta.rise { animation-delay: .22s; }
+@keyframes rise { from { transform: translate3d(0, 26px, 0); } }
 .js .reveal { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0s); }
 .js .reveal.is-in { opacity: 1; transform: none; }
 
