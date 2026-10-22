@@ -219,8 +219,6 @@ section { position: relative; }
 .hours dt { font-weight: 600; color: var(--text-dim); }
 .hours dd { margin: 0; font-weight: 800; font-stretch: 112%; font-size: 17px; font-variant-numeric: tabular-nums; }
 .hours__off { color: #6f737a; font-weight: 600 !important; }
-.hours__ask { font-weight: 600 !important; font-size: 15px !important; }
-.hours__ask a { color: var(--amber-2); }
 .hours div.is-today { background: rgba(255, 138, 31, .1); border-bottom-color: transparent; }
 .hours div.is-today dt { color: var(--text); }
 .hours div.is-today dt::after { content: " · dnes"; color: var(--amber); font-weight: 500; font-size: 13px; }

@@ -87,7 +87,7 @@
   onScroll();
 
   /* ---------- today's row + open/closed badge (Prague time) ---------- */
-  const HOURS = { 1: [8, 17], 2: [8, 17], 4: [8, 17], 5: [8, 17], 6: null, 0: null }; // středa neuvedena
+  const HOURS = { 1: [8, 17], 2: [8, 17], 3: [8, 17], 4: [8, 17], 5: [8, 17], 6: null, 0: null };
   try {
     const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Prague", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date());
     const get = (t) => parts.find((p) => p.type === t).value;
