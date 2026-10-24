@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_poptavky/
 
 Sitemap: https://petaholec.github.io/autotrim-pohorelice/sitemap.xml
