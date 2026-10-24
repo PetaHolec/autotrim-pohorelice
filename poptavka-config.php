@@ -2,8 +2,8 @@
 // Nastavení formuláře „Poptávka dílu“ (poptavka.php).
 return [
     // Kam se posílají poptávky. Více adres oddělte čárkou.
-    // Dokud je prázdné, poptávky se jen ukládají do složky _poptavky/.
-    'to' => '',
+    // Každá poptávka se navíc ukládá do složky _poptavky/ (CSV).
+    'to' => 'autotrim@seznam.cz',
 
     // Odesílatel e-mailu – adresa na doméně webu (kvůli doručitelnosti).
     'from' => 'poptavky@' . preg_replace('/^www\./', '', $_SERVER['SERVER_NAME'] ?? 'localhost'),
