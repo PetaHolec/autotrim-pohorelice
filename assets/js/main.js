@@ -177,6 +177,34 @@
     addEventListener("scroll", toggleDock, { passive: true });
   }
 
+  /* ---------- vstup částí sekcí ---------- */
+  const rise = document.querySelectorAll("[data-rise]");
+  if ("IntersectionObserver" in window && !reduce.matches) {
+    const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+    }), { rootMargin: "0px 0px -8% 0px" });
+    rise.forEach((el) => io.observe(el));
+  } else rise.forEach((el) => el.classList.add("is-in"));
+
+  /* ---------- videa: načíst a přehrávat jen na obrazovce, ne při omezeném pohybu ---------- */
+  const videos = [...document.querySelectorAll("video[data-loop]")];
+  const slow = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ""));
+  if (videos.length && !reduce.matches && !slow && "IntersectionObserver" in window) {
+    const vio = new IntersectionObserver((entries) => entries.forEach((en) => {
+      const v = en.target;
+      if (en.isIntersecting) {
+        if (!v.dataset.ready) {
+          v.querySelectorAll("source[data-src]").forEach((s) => (s.src = s.dataset.src));
+          v.load();
+          v.dataset.ready = "1";
+          v.addEventListener("playing", () => v.classList.add("is-playing"), { once: true });
+        }
+        v.play().catch(() => {});
+      } else v.pause();
+    }), { rootMargin: "200px 0px" });
+    videos.forEach((v) => vio.observe(v));
+  }
+
   const y = document.querySelector("[data-year]");
   if (y) y.textContent = new Date().getFullYear();
 })();

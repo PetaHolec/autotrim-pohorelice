@@ -30,11 +30,12 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
-<link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/hero-800.avif 800w, assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/sklad-800.avif 800w, assets/img/sklad-1280.avif 1280w, assets/img/sklad-1920.avif 1920w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="assets/css/style.css?v=pred-skill">
+<link rel="stylesheet" href="assets/css/style.css?v=video1">
+<script>document.documentElement.classList.add('js')</script>
 
 <script type="application/ld+json">
 {
@@ -87,22 +88,21 @@
 <section class="hero" aria-labelledby="hero-h">
   <div class="hero__bg" data-depth="-0.2">
     <picture>
-      <source type="image/avif" srcset="assets/img/hero-800.avif 800w, assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w" sizes="100vw">
-      <source type="image/webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1280.webp 1280w, assets/img/hero-1920.webp 1920w" sizes="100vw">
-      <img src="assets/img/hero-1280.jpg" width="1280" height="854" alt="" fetchpriority="high" decoding="async">
+      <source type="image/avif" srcset="assets/img/sklad-800.avif 800w, assets/img/sklad-1280.avif 1280w, assets/img/sklad-1920.avif 1920w" sizes="100vw">
+      <source type="image/webp" srcset="assets/img/sklad-800.webp 800w, assets/img/sklad-1280.webp 1280w, assets/img/sklad-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/sklad-1280.jpg" width="1280" height="640" alt="" fetchpriority="high" decoding="async">
     </picture>
   </div>
   <div class="wrap hero__in">
     <div class="hero__card" data-depth="0.06">
-      <p class="hero__kicker">Prodejna autodílů · Pohořelice</p>
       <h1 id="hero-h">Díly pro osobní i&nbsp;užitková auta</h1>
-      <p class="hero__lead">Napište nám, jaký díl sháníte. Dohledáme ho, a&nbsp;co nemáme skladem, objednáme podle vaší specifikace přímo na míru.</p>
+      <p class="hero__lead">Prodejna autodílů v&nbsp;Pohořelicích. Napište nám, jaký díl sháníte. Dohledáme ho, a&nbsp;co nemáme skladem, objednáme podle vaší specifikace přímo na míru.</p>
       <div class="hero__btns">
         <a class="btn btn--black" href="#poptavka">Poptat díl</a>
         <a class="btn btn--outline" href="tel:+420519425986"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>519 425 986</a>
       </div>
     </div>
-    <a class="hero__rating" href="#recenze"><span class="stars" aria-hidden="true">★★★★★</span> <b>4,6 / 5</b> · 71 recenzí na Google</a>
+    <a class="hero__rating" href="#recenze">Google: <b>4,6 z&nbsp;5</b>, 71 recenzí</a>
   </div>
 </section>
 
@@ -110,15 +110,12 @@
 <div class="infobar">
   <div class="wrap infobar__in">
     <div class="infobar__item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
       <div><b>Po–Pá 8:00–17:00</b><span data-status>So–Ne zavřeno</span></div>
     </div>
     <a class="infobar__item" href="https://www.google.com/maps/dir/?api=1&amp;destination=Znojemsk%C3%A1+1026%2C+691+23+Poho%C5%99elice" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
       <div><b>Znojemská 1026</b><span>691 23 Pohořelice · navigovat</span></div>
     </a>
     <a class="infobar__item" href="tel:+420519425986">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>
       <div><b>519 425 986</b><span>Zavolejte nám</span></div>
     </a>
   </div>
@@ -127,25 +124,24 @@
 <!-- POPTÁVKA -->
 <section class="inquiry" id="poptavka" aria-labelledby="inq-h">
   <div class="wrap inquiry__grid">
-    <div class="inquiry__side">
-      <p class="eyebrow">Poptávka dílu</p>
+    <div class="inquiry__side" data-rise>
       <h2 id="inq-h">Řekněte nám, co sháníte</h2>
       <p class="inquiry__lead">Vyplňte vůz a&nbsp;díl, který potřebujete. Ověříme dostupnost a&nbsp;ozveme se vám s&nbsp;nabídkou.</p>
-      <ol class="steps">
-        <li><span>1</span><div><b>Vůz</b>Značka, model, rok výroby – ideálně i&nbsp;VIN z&nbsp;technického průkazu.</div></li>
-        <li><span>2</span><div><b>Díl</b>Popište, co potřebujete. Pomůže i&nbsp;fotka nebo číslo dílu.</div></li>
-        <li><span>3</span><div><b>Ozveme se</b>V&nbsp;otevírací době Po–Pá 8:00–17:00 vám zavoláme.</div></li>
-      </ol>
+      <ul class="steps">
+        <li><div><b>Vůz</b>Značka, model, rok výroby – ideálně i&nbsp;VIN z&nbsp;technického průkazu.</div></li>
+        <li><div><b>Díl</b>Popište, co potřebujete. Pomůže i&nbsp;fotka nebo číslo dílu.</div></li>
+        <li><div><b>Ozveme se</b>V&nbsp;otevírací době Po–Pá 8:00–17:00 vám zavoláme.</div></li>
+      </ul>
       <figure class="inquiry__photo">
         <picture>
-          <source type="image/avif" srcset="assets/img/dily-600.avif 600w, assets/img/dily-1000.avif 1000w" sizes="(min-width: 1000px) 34vw, 92vw">
-          <source type="image/webp" srcset="assets/img/dily-600.webp 600w, assets/img/dily-1000.webp 1000w" sizes="(min-width: 1000px) 34vw, 92vw">
-          <img src="assets/img/dily-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt="Rozložené díly karburátoru se šrouby a těsněním na bílém stole">
+          <source type="image/avif" srcset="assets/img/pokladna-600.avif 600w, assets/img/pokladna-1000.avif 1000w" sizes="(min-width: 1000px) 34vw, 92vw">
+          <source type="image/webp" srcset="assets/img/pokladna-600.webp 600w, assets/img/pokladna-1000.webp 1000w" sizes="(min-width: 1000px) 34vw, 92vw">
+          <img src="assets/img/pokladna-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt="Prodavač za pultem prodejny Auto TriM, za ním regály s autokosmetikou a díly">
         </picture>
       </figure>
     </div>
 
-    <div class="formcard">
+    <div class="formcard" data-rise style="--d:1">
       <div class="formcard__head">
         <h3>Formulář poptávky</h3>
         <span>Povinná pole <span class="req">*</span></span>
@@ -224,7 +220,6 @@
       </form>
 
       <div class="done" data-done hidden tabindex="-1">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="m14 24.5 7 7 13-14"/></svg>
         <h3>Poptávka odeslána</h3>
         <p>Děkujeme. Díl dohledáme a&nbsp;ozveme se vám na uvedený telefon.</p>
         <button class="btn btn--outline" type="button" data-again>Poslat další poptávku</button>
@@ -239,29 +234,32 @@
 <!-- VOZIDLA -->
 <section class="section" aria-labelledby="veh-h">
   <div class="wrap">
-    <div class="section__head">
-      <p class="eyebrow">Pro koho</p>
+    <div class="section__head" data-rise>
       <h2 id="veh-h">Osobní i&nbsp;užitková vozidla</h2>
     </div>
     <div class="vehicles">
-      <article class="vehicle">
-        <picture>
-          <source type="image/avif" srcset="assets/img/osobni-700.avif 700w, assets/img/osobni-1200.avif 1200w" sizes="(min-width: 800px) 50vw, 92vw">
-          <source type="image/webp" srcset="assets/img/osobni-700.webp 700w, assets/img/osobni-1200.webp 1200w" sizes="(min-width: 800px) 50vw, 92vw">
-          <img src="assets/img/osobni-700.jpg" width="700" height="467" loading="lazy" decoding="async" alt="Černobílá fotografie motorového prostoru osobního automobilu">
-        </picture>
+      <article class="vehicle" data-rise>
+        <div class="vehicle__media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/venek-osobni-700.avif 700w, assets/img/venek-osobni-1200.avif 1200w" sizes="(min-width: 800px) 50vw, 92vw">
+            <source type="image/webp" srcset="assets/img/venek-osobni-700.webp 700w, assets/img/venek-osobni-1200.webp 1200w" sizes="(min-width: 800px) 50vw, 92vw">
+            <img src="assets/img/venek-osobni-700.jpg" width="700" height="394" loading="lazy" decoding="async" alt="Osobní auta zaparkovaná před prodejnou Auto TriM v Pohořelicích">
+          </picture>
+        </div>
         <div class="vehicle__body">
           <h3>Osobní automobily</h3>
           <p>Náhradní díly na osobní auta všech značek – od brzd a&nbsp;filtrů po díly motoru a&nbsp;podvozku.</p>
           <button class="link-btn" type="button" data-pick-typ="Osobní">Poptat díl na osobní auto <span aria-hidden="true">→</span></button>
         </div>
       </article>
-      <article class="vehicle">
-        <picture>
-          <source type="image/avif" srcset="assets/img/uzitkova-700.avif 700w, assets/img/uzitkova-1200.avif 1200w" sizes="(min-width: 800px) 50vw, 92vw">
-          <source type="image/webp" srcset="assets/img/uzitkova-700.webp 700w, assets/img/uzitkova-1200.webp 1200w" sizes="(min-width: 800px) 50vw, 92vw">
-          <img src="assets/img/uzitkova-700.jpg" width="700" height="467" loading="lazy" decoding="async" alt="Bílé užitkové vozidlo se skříňovou nástavbou na silnici">
-        </picture>
+      <article class="vehicle" data-rise style="--d:1">
+        <div class="vehicle__media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/venek-uzitkova-700.avif 700w, assets/img/venek-uzitkova-1200.avif 1200w" sizes="(min-width: 800px) 50vw, 92vw">
+            <source type="image/webp" srcset="assets/img/venek-uzitkova-700.webp 700w, assets/img/venek-uzitkova-1200.webp 1200w" sizes="(min-width: 800px) 50vw, 92vw">
+            <img src="assets/img/venek-uzitkova-700.jpg" width="700" height="394" loading="lazy" decoding="async" alt="Bílá dodávka a osobní auta před modrou budovou prodejny Auto TriM">
+          </picture>
+        </div>
         <div class="vehicle__body">
           <h3>Užitková vozidla</h3>
           <p>Díly pro dodávky a&nbsp;užitková auta. Co není skladem, objednáme podle vaší specifikace.</p>
@@ -275,21 +273,20 @@
 <!-- SORTIMENT -->
 <section class="section section--grey" id="sortiment" aria-labelledby="sort-h">
   <div class="wrap">
-    <div class="section__head">
-      <p class="eyebrow">Sortiment</p>
+    <div class="section__head" data-rise>
       <h2 id="sort-h">Co u&nbsp;nás poptáte</h2>
       <p>Klikněte na skupinu a&nbsp;formulář poptávky se rovnou předvyplní.</p>
     </div>
     <ul class="cats">
-      <li style="--i:0"><button type="button" class="cat" data-pick="Brzdy"><span class="cat__ic"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="5"/><circle cx="20" cy="10.5" r="1.2"/><circle cx="29" cy="17" r="1.2"/><circle cx="25.6" cy="27.6" r="1.2"/><circle cx="14.4" cy="27.6" r="1.2"/><circle cx="11" cy="17" r="1.2"/></svg></span><b>Brzdy</b><small>Kotouče, destičky, čelisti</small></button></li>
-      <li style="--i:1"><button type="button" class="cat" data-pick="Filtry"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M11 11h18v20a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3z"/><path d="M13 6h14v5H13z"/><path d="M11 17h18M11 22h18M11 27h18"/></svg></span><b>Filtry</b><small>Olejové, vzduchové, palivové, kabinové</small></button></li>
-      <li style="--i:2"><button type="button" class="cat" data-pick="Oleje a kapaliny"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M10 15h20v19H10z"/><path d="M14 15V9h7v6"/><path d="M24 10h6l-2 5"/><path d="M15 23h10"/></svg></span><b>Oleje a&nbsp;kapaliny</b><small>Motorové oleje, chladicí a&nbsp;brzdové kapaliny</small></button></li>
-      <li style="--i:3"><button type="button" class="cat" data-pick="Zapalování a žhavení"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M17 5h6v8h-6z"/><path d="M15 13h10l-1 5h-8z"/><path d="M14 18h12v5H14z"/><path d="M16 23h8v7h-8z"/><path d="M20 30v4h4"/></svg></span><b>Zapalování a&nbsp;žhavení</b><small>Svíčky, žhavicí svíčky, cívky</small></button></li>
-      <li style="--i:4"><button type="button" class="cat" data-pick="Podvozek a tlumiče"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M17 5h6v5h-6zM17 30h6v5h-6z"/><path d="M12 10h16M12 30h16"/><path d="m13 13 14 3-14 3 14 3-14 3 14 2"/></svg></span><b>Podvozek a&nbsp;tlumiče</b><small>Tlumiče, pružiny, čepy, ramena</small></button></li>
-      <li style="--i:5"><button type="button" class="cat" data-pick="Spojka a rozvody"><span class="cat__ic"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="9.5"/><circle cx="20" cy="20" r="3.5"/><path d="M20 6.5v4M20 29.5v4M6.5 20h4M29.5 20h4"/></svg></span><b>Spojka a&nbsp;rozvody</b><small>Spojkové sady, řemeny, kladky</small></button></li>
-      <li style="--i:6"><button type="button" class="cat" data-pick="Osvětlení a elektro"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M20 6a8.5 8.5 0 0 1 5 15.4V25H15v-3.6A8.5 8.5 0 0 1 20 6z"/><path d="M15 29h10M16.5 33h7"/></svg></span><b>Osvětlení a&nbsp;elektro</b><small>Žárovky a pojistky</small></button></li>
-      <li style="--i:7"><button type="button" class="cat" data-pick="Stěrače"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M7 31C11 18 22 10 34 9"/><path d="M20 33 9.5 27"/><circle cx="20" cy="33" r="2"/></svg></span><b>Stěrače</b><small>Stírací lišty a&nbsp;ramena</small></button></li>
-      <li style="--i:8"><button type="button" class="cat" data-pick="Výbava a autodoplňky"><span class="cat__ic"><svg viewBox="0 0 40 40"><path d="M20 7 33 31H7z"/><path d="M20 15v8M20 27v.5"/></svg></span><b>Výbava a&nbsp;autodoplňky</b><small>Potřebná výbava do auta a&nbsp;doplňky</small></button></li>
+      <li style="--i:0;--d:0" data-rise><button type="button" class="cat" data-pick="Brzdy"><b>Brzdy</b><small>Kotouče, destičky, čelisti</small></button></li>
+      <li style="--i:1;--d:1" data-rise><button type="button" class="cat" data-pick="Filtry"><b>Filtry</b><small>Olejové, vzduchové, palivové, kabinové</small></button></li>
+      <li style="--i:2;--d:2" data-rise><button type="button" class="cat" data-pick="Oleje a kapaliny"><b>Oleje a&nbsp;kapaliny</b><small>Motorové oleje, chladicí a&nbsp;brzdové kapaliny</small></button></li>
+      <li style="--i:3;--d:0" data-rise><button type="button" class="cat" data-pick="Zapalování a žhavení"><b>Zapalování a&nbsp;žhavení</b><small>Svíčky, žhavicí svíčky, cívky</small></button></li>
+      <li style="--i:4;--d:1" data-rise><button type="button" class="cat" data-pick="Podvozek a tlumiče"><b>Podvozek a&nbsp;tlumiče</b><small>Tlumiče, pružiny, čepy, ramena</small></button></li>
+      <li style="--i:5;--d:2" data-rise><button type="button" class="cat" data-pick="Spojka a rozvody"><b>Spojka a&nbsp;rozvody</b><small>Spojkové sady, řemeny, kladky</small></button></li>
+      <li style="--i:6;--d:0" data-rise><button type="button" class="cat" data-pick="Osvětlení a elektro"><b>Osvětlení a&nbsp;elektro</b><small>Žárovky a pojistky</small></button></li>
+      <li style="--i:7;--d:1" data-rise><button type="button" class="cat" data-pick="Stěrače"><b>Stěrače</b><small>Stírací lišty a&nbsp;ramena</small></button></li>
+      <li style="--i:8;--d:2" data-rise><button type="button" class="cat" data-pick="Výbava a autodoplňky"><b>Výbava a&nbsp;autodoplňky</b><small>Potřebná výbava do auta a&nbsp;doplňky</small></button></li>
     </ul>
     <p class="cats__more">Hledáte něco jiného? <button type="button" class="link-btn" data-pick="Jiné">Poptejte jakýkoli díl</button></p>
   </div>
@@ -298,31 +295,30 @@
 <!-- RECENZE -->
 <section class="reviews" id="recenze" aria-labelledby="rev-h">
   <div class="wrap">
-    <div class="reviews__head">
+    <div class="reviews__head" data-rise>
       <div>
-        <p class="eyebrow eyebrow--dark">Recenze</p>
         <h2 id="rev-h">Co o&nbsp;nás říkají zákazníci</h2>
       </div>
       <div class="score" aria-label="Hodnocení 4,6 z 5 podle 71 recenzí na Google">
-        <b>4,6</b><span>/ 5</span>
-        <small><span class="stars" aria-hidden="true">★★★★★</span><br>71 recenzí na Google</small>
+        <b>4,6</b><span>z&nbsp;5</span>
+        <small>71 recenzí<br>na Google</small>
       </div>
     </div>
     <div class="quotes">
-      <figure class="quote">
+      <figure class="quote" data-rise style="--d:0">
         <blockquote><p>Velký výběr náhradních dílů, když něco nemají objednají do druhého dne. Ochotný prodavač, který umí poradit.</p></blockquote>
-        <figcaption><b>Jarka Veselská</b><span>★★★★★ · Google, před 4 lety</span></figcaption>
+        <figcaption><b>Jarka Veselská</b><span>Google, před 4 lety</span></figcaption>
       </figure>
-      <figure class="quote">
+      <figure class="quote" data-rise style="--d:1">
         <blockquote><p>Mají veškeré náhradní díly na automobily všech značek, když nemají rádi objednají. Slušné ceny. (Odběrné místo DPD)</p></blockquote>
-        <figcaption><b>Workout Panther</b><span>★★★★★ · Google, před 6 lety</span></figcaption>
+        <figcaption><b>Workout Panther</b><span>Google, před 6 lety</span></figcaption>
       </figure>
-      <figure class="quote">
+      <figure class="quote" data-rise style="--d:2">
         <blockquote><p>Dobrý den, jako vždy vše předáno ve 100% pořádku a navíc příjemní lidé, stále pilně pracující...děkuji za příští návštěvu</p></blockquote>
-        <figcaption><b>Alena Kovářová</b><span>★★★★★ · Google, před rokem</span></figcaption>
+        <figcaption><b>Alena Kovářová</b><span>Google, před rokem</span></figcaption>
       </figure>
     </div>
-    <p class="reviews__more"><a href="https://www.google.com/maps/search/?api=1&amp;query=Autotrim+Martin+Sl%C3%A1dek%2C+Znojemsk%C3%A1+1026%2C+691+23+Poho%C5%99elice" target="_blank" rel="noopener">Všechny recenze na Google <span aria-hidden="true">↗</span></a></p>
+    <p class="reviews__more"><a href="https://www.google.com/maps/search/?api=1&amp;query=Autotrim+Martin+Sl%C3%A1dek%2C+Znojemsk%C3%A1+1026%2C+691+23+Poho%C5%99elice" target="_blank" rel="noopener">Všechny recenze na Google</a></p>
   </div>
 </section>
 
@@ -330,12 +326,12 @@
 <section class="cta" aria-label="Poptávka dílu">
   <div class="cta__bg" data-depth="-0.15">
     <picture>
-      <source type="image/avif" srcset="assets/img/pneu-900.avif 900w, assets/img/pneu-1600.avif 1600w" sizes="100vw">
-      <source type="image/webp" srcset="assets/img/pneu-900.webp 900w, assets/img/pneu-1600.webp 1600w" sizes="100vw">
-      <img src="assets/img/pneu-900.jpg" width="900" height="675" loading="lazy" decoding="async" alt="">
+      <source type="image/avif" srcset="assets/img/baterie-900.avif 900w, assets/img/baterie-1600.avif 1600w" sizes="100vw">
+      <source type="image/webp" srcset="assets/img/baterie-900.webp 900w, assets/img/baterie-1600.webp 1600w" sizes="100vw">
+      <img src="assets/img/baterie-900.jpg" width="900" height="450" loading="lazy" decoding="async" alt="">
     </picture>
   </div>
-  <div class="wrap cta__in">
+  <div class="wrap cta__in" data-rise>
     <h2>Nevíte si rady, jaký díl potřebujete?</h2>
     <p>Napište nám značku, model a&nbsp;co se s&nbsp;autem děje. Poradíme a&nbsp;díl dohledáme.</p>
     <div class="cta__btns">
@@ -348,12 +344,11 @@
 <!-- KONTAKT -->
 <section class="section" id="kontakt" aria-labelledby="contact-h">
   <div class="wrap">
-    <div class="section__head">
-      <p class="eyebrow">Kontakt</p>
+    <div class="section__head" data-rise>
       <h2 id="contact-h">Kde nás najdete</h2>
     </div>
     <div class="contact">
-      <div class="contact__cards">
+      <div class="contact__cards" data-rise>
         <div class="ccard">
           <h3>Prodejna</h3>
           <p class="ccard__big"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Znojemsk%C3%A1+1026%2C+691+23+Poho%C5%99elice" target="_blank" rel="noopener">Znojemská 1026<br>691 23 Pohořelice</a></p>
@@ -376,7 +371,7 @@
           </table>
         </div>
       </div>
-      <div class="map">
+      <div class="map" data-rise style="--d:1">
         <iframe title="Mapa Google: Auto TriM, Znojemská 1026, Pohořelice" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
           src="https://maps.google.com/maps?q=Autotrim%20Martin%20Sl%C3%A1dek%2C%20Znojemsk%C3%A1%201026%2C%20691%2023%20Poho%C5%99elice&amp;z=16&amp;hl=cs&amp;output=embed"></iframe>
       </div>
@@ -418,6 +413,6 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
 </svg>
-<script src="assets/js/main.js?v=pred-skill" defer></script>
+<script src="assets/js/main.js?v=video1" defer></script>
 </body>
 </html>
