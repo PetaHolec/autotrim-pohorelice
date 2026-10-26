@@ -120,16 +120,18 @@
     else if (q.get("chyba")) showMsg(`Poptávku se nepodařilo odeslat. Zkontrolujte povinná pole, nebo zavolejte na ${PHONE}.`);
   }
 
-  // skupina dílů -> předvyplnit formulář
-  document.querySelectorAll("[data-pick], [data-pick-typ]").forEach((b) => b.addEventListener("click", (e) => {
+  // skupina dílů -> předvyplnit formulář (delegace: tlačítka u 3D dodávky vznikají až později)
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-pick], [data-pick-typ]");
+    if (!b || !form) return;
     e.preventDefault();
     const sel = document.querySelector("[data-skupina]");
     if (sel && b.dataset.pick) sel.value = b.dataset.pick;
     if (b.dataset.pickTyp) form.querySelector(`[name="typ"][value="${b.dataset.pickTyp}"]`).checked = true;
     if (form.hidden) document.querySelector("[data-again]").click();
     document.querySelector(".formcard").scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
-    setTimeout(() => form.elements.znacka.value ? form.elements.dil.focus({ preventScroll: true }) : form.elements.znacka.focus({ preventScroll: true }), reduce.matches ? 0 : 500);
-  }));
+    setTimeout(() => form.elements.znacka.value ? form.elements.dil.focus({ preventScroll: true }) : form.elements.znacka.focus({ preventScroll: true }), reduce.matches ? 0 : 600);
+  });
 
   /* ---------- otevírací doba: dnešní den + otevřeno/zavřeno (čas Praha) ---------- */
   const HOURS = { 1: [8, 17], 2: [8, 17], 3: [8, 17], 4: [8, 17], 5: [8, 17], 6: null, 0: null };
@@ -147,25 +149,6 @@
       s.hidden = false;
     });
   } catch (e) {}
-
-  /* ---------- jemná parallaxa (transform) ---------- */
-  const layers = [...document.querySelectorAll("[data-depth]")].map((el) => ({ el, depth: +el.dataset.depth || 0, host: el.closest("section") }));
-  let vh = innerHeight, ticking = false;
-  function frame() {
-    ticking = false;
-    if (reduce.matches) return;
-    const f = innerWidth < 780 ? 0.6 : 1;
-    for (const l of layers) {
-      const r = l.host.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > vh + 200) continue;
-      l.el.style.transform = `translate3d(0, ${((r.top + r.height / 2 - vh / 2) * l.depth * f).toFixed(1)}px, 0)`;
-    }
-  }
-  const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
-  addEventListener("scroll", request, { passive: true });
-  addEventListener("resize", () => { vh = innerHeight; request(); }, { passive: true });
-  reduce.addEventListener?.("change", (e) => { if (e.matches) layers.forEach((l) => (l.el.style.transform = "")); else request(); });
-  request();
 
   /* ---------- mobilní lišta: schovat, když je formulář na obrazovce ---------- */
   const dock = document.querySelector(".dock");
@@ -186,23 +169,77 @@
     rise.forEach((el) => io.observe(el));
   } else rise.forEach((el) => el.classList.add("is-in"));
 
-  /* ---------- videa: načíst a přehrávat jen na obrazovce, ne při omezeném pohybu ---------- */
-  const videos = [...document.querySelectorAll("video[data-loop]")];
-  const slow = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ""));
-  if (videos.length && !reduce.matches && !slow && "IntersectionObserver" in window) {
-    const vio = new IntersectionObserver((entries) => entries.forEach((en) => {
-      const v = en.target;
-      if (en.isIntersecting) {
-        if (!v.dataset.ready) {
-          v.querySelectorAll("source[data-src]").forEach((s) => (s.src = s.dataset.src));
-          v.load();
-          v.dataset.ready = "1";
-          v.addEventListener("playing", () => v.classList.add("is-playing"), { once: true });
-        }
-        v.play().catch(() => {});
-      } else v.pause();
-    }), { rootMargin: "200px 0px" });
-    videos.forEach((v) => vio.observe(v));
+  /* ---------- dodávka ve žlutém pruhu jede jen na obrazovce (ilustrace dílů jen po najetí myší) ---------- */
+  if ("IntersectionObserver" in window && !reduce.matches) {
+    const targets = document.querySelectorAll("[data-play]");
+    const pio = new IntersectionObserver((entries) => entries.forEach((en) => en.target.classList.toggle("is-play", en.isIntersecting)), { rootMargin: "0px 0px -10% 0px" });
+    targets.forEach((el) => pio.observe(el));
+  }
+
+  /* ---------- recenze: pás jede zleva doprava, dá se posouvat myší i prstem ---------- */
+  const belt = document.querySelector("[data-belt]");
+  if (belt) {
+    const track = belt.querySelector("[data-belt-track]");
+    const items = [...track.children];
+    items.forEach((el) => {
+      const c = el.cloneNode(true);
+      c.setAttribute("aria-hidden", "true");
+      track.append(c);
+    });
+    const SPEED = 42; // px za sekundu
+    let half = 0, pos = 0, last = 0, hold = false, seen = false, resume = 0;
+    const measure = () => { half = items[0].nextElementSibling ? track.children[items.length].offsetLeft - items[0].offsetLeft : 0; };
+    const wrapPos = () => { if (!half) return; while (pos < 1) pos += half; while (pos >= half + 1) pos -= half; };
+    const set = () => { wrapPos(); belt.scrollLeft = pos; };
+    measure();
+    pos = half;
+    set();
+    addEventListener("resize", () => { measure(); set(); });
+
+    belt.addEventListener("scroll", () => {
+      if (Math.abs(belt.scrollLeft - pos) > 2) { pos = belt.scrollLeft; if (pos < 1 || pos >= half + 1) set(); }
+    }, { passive: true });
+
+    const pause = (ms) => { clearTimeout(resume); hold = true; if (ms) resume = setTimeout(() => { hold = false; }, ms); };
+    belt.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") pause(); });
+    belt.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse" && !drag) hold = false; });
+    belt.addEventListener("touchstart", () => pause(), { passive: true });
+    belt.addEventListener("touchend", () => pause(2500), { passive: true });
+    belt.addEventListener("focusin", () => pause());
+    belt.addEventListener("focusout", () => { hold = false; });
+
+    // tažení myší (prst posouvá nativně)
+    let drag = null;
+    belt.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      drag = { x: e.clientX, p: pos };
+      belt.setPointerCapture(e.pointerId);
+      belt.classList.add("is-drag");
+    });
+    belt.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      pos = drag.p - (e.clientX - drag.x);
+      set();
+    });
+    const endDrag = (e) => {
+      if (!drag) return;
+      drag = null;
+      belt.classList.remove("is-drag");
+      if (!belt.matches(":hover")) hold = false;
+    };
+    belt.addEventListener("pointerup", endDrag);
+    belt.addEventListener("pointercancel", endDrag);
+
+    const tick = (t) => {
+      const dt = last ? Math.min(t - last, 100) / 1000 : 0;
+      last = t;
+      if (seen && !hold && !reduce.matches) { pos -= SPEED * dt; set(); }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([en]) => { seen = en.isIntersecting; }).observe(belt);
+    } else seen = true;
   }
 
   const y = document.querySelector("[data-year]");
