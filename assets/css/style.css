@@ -53,6 +53,13 @@ button { font: inherit; color: inherit; }
 }
 .head__tel svg { width: 18px; height: 18px; fill: currentColor; }
 .head__cta { min-height: 44px; padding: 0 18px; }
+.burger { display: none; flex: none; width: 44px; height: 44px; margin-right: -8px; padding: 0; border: 0; background: none; color: var(--ink); cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
+.burger span { display: block; width: 24px; height: 3px; background: currentColor; }
+.burger:hover span { background: var(--red); }
+.burger:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.is-open .burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.is-open .burger span:nth-child(2) { opacity: 0; }
+.is-open .burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* úvod s dodávkou */
 .stage { position: relative; background: var(--paper); }
@@ -313,6 +320,18 @@ button { font: inherit; color: inherit; }
 
 @media (max-width: 999px) {
   .menu { display: none; }
+  .js .burger { display: inline-flex; }
+  .js .head.is-open .menu {
+    display: flex; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0;
+    max-height: calc(100svh - var(--head)); overflow-y: auto; padding: 8px var(--gut) 20px;
+    background: #fff; border-bottom: 1px solid var(--line-2);
+  }
+  .js .head.is-open .menu a {
+    display: flex; align-items: center; min-height: 54px; padding: 0; font-size: 18px;
+    border-bottom: 1px solid var(--line); border-left: 4px solid transparent; padding-left: 12px;
+  }
+  .js .head.is-open .menu a:last-child { border-bottom: 0; }
+  .js .head.is-open .menu a:hover, .js .head.is-open .menu a[aria-current="page"] { border-left-color: var(--yellow); background: var(--paper); }
   .inquiry__grid, .shop, .contact, .cta__in { grid-template-columns: 1fr; }
   .cats { grid-template-columns: 1fr 1fr; }
   .foot__in { grid-template-columns: 1fr 1fr; }

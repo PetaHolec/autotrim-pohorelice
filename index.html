@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="assets/css/style.css?v=dily17">
+<link rel="stylesheet" href="assets/css/style.css?v=dily18">
 <link rel="modulepreload" href="assets/js/vendor/three.module.min.js">
 <script>document.documentElement.classList.add('js');addEventListener('load',function(){var s=document.querySelector('[data-stage]');if(s&&!s.classList.contains('is-live'))s.classList.add('no-3d')})</script>
 
@@ -74,7 +74,7 @@
     <a class="logo" href="#top" aria-label="Auto TriM – na začátek stránky">
       <img src="assets/img/logo-black.png" width="224" height="44" alt="Auto TriM">
     </a>
-    <nav class="menu" aria-label="Hlavní navigace">
+    <nav class="menu" id="menu" aria-label="Hlavní navigace">
       <a href="#poptavka">Poptávka</a>
       <a href="#sortiment">Sortiment</a>
       <a href="#prodejna">Prodejna</a>
@@ -83,6 +83,7 @@
     </nav>
     <a class="head__tel" href="tel:+420519425986"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg><span>519 425 986</span></a>
     <a class="btn btn--main head__cta" href="#poptavka">Poptat díl</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -642,5 +643,6 @@
 </svg>
 <script src="assets/js/main.js?v=dily6" defer></script>
 <script type="module" src="assets/js/rozpad.js?v=dily4"></script>
+<script src="assets/js/nav.js?v=1" defer></script>
 </body>
 </html>
