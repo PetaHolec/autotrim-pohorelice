@@ -232,6 +232,8 @@ button { font: inherit; color: inherit; }
 .pickup__brands li { display: grid; place-items: center; min-height: 120px; padding: 24px 20px; background: #fff; border: 1.5px solid var(--ink); }
 .pickup__brands img { height: 46px; width: auto; max-width: 100%; }
 .pickup__brands img[alt="DPD"] { height: 58px; margin-block: -6px; }
+.pickup__brands img[alt="Balíkovna"] { height: auto; width: min(100%, 200px); }
+.pickup__brands img[alt="GLS"] { height: 52px; }
 .contact__parcel { font-size: 16px; margin: 4px 0 0; }
 .contact__parcel b { font-weight: 500; }
 .vtypes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
@@ -296,9 +298,11 @@ button { font: inherit; color: inherit; }
 .foot { background: var(--ink); color: #e9e8e2; padding: 56px 0 24px; }
 .foot__in { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
 .foot__brand img { height: 36px; width: auto; margin-bottom: 14px; }
-.foot__brands { display: inline-flex; gap: 8px; margin-top: 4px; }
+.foot__brands { display: inline-flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .foot__brands img { height: 40px; width: auto; margin: 0; padding: 8px 12px; background: #fff; border-radius: 4px; }
 .foot__brands img[alt="DPD"] { padding: 4px 14px; }
+.foot__brands img[alt="Balíkovna"] { height: auto; width: 150px; padding: 14px 12px; }
+.foot__brands img[alt="GLS"] { padding: 4px 14px; }
 .foot address { font-style: normal; line-height: 1.8; }
 .foot a { text-decoration: none; }
 .foot a:hover { color: var(--yellow); }
@@ -373,6 +377,7 @@ button { font: inherit; color: inherit; }
   .pickup__brands li { min-height: 92px; padding: 18px 12px; }
   .pickup__brands img { height: 34px; }
   .pickup__brands img[alt="DPD"] { height: 44px; margin-block: -5px; }
+  .pickup__brands img[alt="GLS"] { height: 38px; }
   .stock__list b { font-size: 18px; }
   .foot__in { grid-template-columns: 1fr; }
   .map iframe { min-height: 320px; }
